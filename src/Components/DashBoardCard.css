@@ -1,0 +1,44 @@
+.currentWeather{
+    width: 500px;
+    border-radius: 20px;
+    background-color: rgb(31, 167, 167);
+    height: auto;
+    margin: auto;
+}
+ .weather-description{
+    
+    display: flex; 
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.weather-maxmincel, .weather-type{
+    display: inline;
+}
+.weather-maxmincel{
+    float: right;
+    padding-left: 300px;
+}
+
+.current-weather-footer {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(55, 59, 71);
+    height: auto;
+  }
+  
+  .con1, .con2, .con3 {
+    display: inline-block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+  }
+  .con1{
+    padding-left: 100px;
+  }
+  .con3{
+    padding-right: 100px;
+  }
+  p{
+    padding: 0;
+  }

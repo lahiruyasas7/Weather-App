@@ -1,38 +1,96 @@
 .App {
   text-align: center;
+ 
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body{
+  background-image: url('./Assests/Headerbg.png');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-color: rgb(31, 33, 40);
+  height: 50%;
+  
+  
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.top{
+  
   display: flex;
-  flex-direction: column;
+  text-align: center;
+}
+.header-name, .weather-icon{
+  display: inline-block;
+}
+.weather-icon{
+  height: 30px;
+  padding-top: 30px;
+  padding-left: 40%;
+}
+
+h1, h2, p{
+  color: aliceblue;
+}
+
+.footer {
+  left: 0;
+  bottom: 0%;
+  background-color: rgb(55, 59, 71);
+  color: rgb(255, 255, 255);
+  padding: 20px;
+  text-align: center;
+  align-self: flex-end;
+  position: fixed;
+  width: 100%;
+}
+
+
+
+
+
+.currentWeather{
+  width: 500px;
+  border-radius: 20px;
+  background-color: rgb(31, 167, 167);
+  height: auto;
+  margin: auto;
+}
+.weather-description{
+  
+  display: flex; 
+  text-align: center;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.weather-maxmincel, .weather-type{
+  display: inline;
+}
+.weather-maxmincel{
+  float: right;
+  padding-left: 300px;
 }
 
-.App-link {
-  color: #61dafb;
+.current-weather-footer {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(55, 59, 71);
+  height: auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.con1, .con2, .con3 {
+  display: inline-block;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  
 }
+.con1{
+  padding-left: 100px;
+}
+.con3{
+  padding-right: 100px;
+}
+p{
+  padding: 0;
+}
+
+
+

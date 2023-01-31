@@ -17,8 +17,8 @@ function DashBoardCard(props){
 
 
 return(
-        
-<div className='currentWeather'>
+   
+<div className='currentWeather' key={props.Citycode}>
   
 <div>
     <h2 className='cityName'>{props.name}</h2>
@@ -30,10 +30,10 @@ return(
                     }).format(new Date(currentDateTime))}</p>
 </div>
 
-<div className='weather-description'>
+<div className='weather-description' >
 
     <div className='weather-type'>
-        <p className='type'></p>
+        <p className='type'>{props.description}</p>
         <img src='../Assests/iconcloud.png' className='wether-icon'/>
 
     </div>
@@ -45,23 +45,24 @@ return(
 
 
 </div>
-<div className='current-weather-footer'>
+<div className='current-weather-footer'  >
+    
     <div className="con1">
-        <p>Presure:  pa</p>
-        <p>Huminity: </p>
-        <p>Visibility: 8 Km</p>
+        <p>Presure: {props.presure} pa</p>
+        <p>Humidity:{props.humidity} </p>
+        <p>Visibility: {props.visibility}</p>
     </div>
     <div className='con2'>
         <p>4ms degree</p>
     </div>
     <div className='con3'>
-        <p>sunrise: 8.00</p>
-        <p>Sunset: 6.00</p>
+        <p>sunrise: {new Date(props.sunrise*1000).toLocaleTimeString()}</p>
+        <p>Sunset: {new Date(props.sunset*1000).toLocaleTimeString()}</p>
     </div>
 </div>
 
 </div>
-            
+      
        
     )
 }

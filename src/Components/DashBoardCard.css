@@ -1,10 +1,16 @@
+
+
+
 .currentWeather{
     width: 500px;
     border-radius: 20px;
     background-color: rgb(31, 167, 167);
     height: auto;
     margin: auto;
-}
+   
+  }
+
+
  .weather-description{
     
     display: flex; 
@@ -34,10 +40,10 @@
     
   }
   .con1{
-    padding-left: 100px;
+    padding-left: 50px;
   }
   .con3{
-    padding-right: 100px;
+    padding-right: 50px;
   }
   p{
     padding: 0;

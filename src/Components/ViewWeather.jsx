@@ -1,9 +1,9 @@
 
-//import React from 'react';
+
 import './viewWeather.css'
 import React, {useState, useEffect} from 'react';
 
-function ViewWeather(weather){
+function ViewWeather(viewcard){
 
  const [currentDateTime, setCurrentDateTime] = useState(new Date().toLocaleString());
 
@@ -16,13 +16,13 @@ function ViewWeather(weather){
 
 
         return(
-            <div className='currentWeather'>
+            <div className='viewcurrentWeather' >
 
-                <button className="arrow-button" >
-                    <span className="arrow-symbol">←</span>
+                <button className="viewarrow-button" >
+                    <span className="viewarrow-symbol">←</span>
                 </button>
                 <div>
-                    <h2 className='cityName'>Colombo</h2>
+                    <h2 className='viewcityName'>{viewcard.name}</h2>
                     <p className='timeNdate'> {new Intl.DateTimeFormat('default', {
                                     hour: 'numeric',
                                     minute: 'numeric',
@@ -31,14 +31,14 @@ function ViewWeather(weather){
                                     }).format(new Date(currentDateTime))}</p>
                 </div>
 
-                <div className='weather-description'>
+                <div className='viewweather-description'>
 
-                    <div className='weather-type'>
-                        <p className='type'>Few Clouds</p>
+                    <div className='viewweather-type'>
+                        <p className='viewtype'>Few Clouds</p>
                         <img src='../Assests/iconcloud.png' className='wether-icon'/>
 
                     </div>
-                    <div className='weather-maxmincel'>
+                    <div className='viewweather-maxmincel'>
                         <h2 className='celcicus'>c</h2>
                         <p className="maxtem">Temp min:16c</p>
                         <p className="tempmin">Temp max:25c</p>
@@ -46,7 +46,7 @@ function ViewWeather(weather){
 
 
                 </div>
-                <div className='current-weather-footer'>
+                <div className='viewcurrent-weather-footer'>
                     <div className="con1">
                         <p>Presure: 101 pa</p>
                         <p>Huminity: 78%</p>

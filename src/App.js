@@ -3,24 +3,33 @@ import axios from 'axios';
 import './App.css';
 //import cities from './cities.json';
 import DashBoardCard from './Components/DashBoardCard';
-//import ViewWeather from './Components/ViewWeather';
+import ViewWeather from './Components/ViewWeather';
+import {BrowseRouter as Router, Route, Routes} from 'react-router-dom';
 
-const cities = [  {    CityCode: "1248991",    CityName: "Colombo",    Temp: "33.0",    Status: "Clouds"  },  {    CityCode: "1850147",    CityName: "Tokyo",    Temp: "8.6",    Status: "Clear"  },  {    CityCode: "2644210",    CityName: "Liverpool",    Temp: "16.5",    Status: "Rain"  },  {    CityCode: "2988507",    CityName: "Paris",    Temp: "22.4",    Status: "Clear"  },  {    CityCode: "2147714",    CityName: "Sydney",    Temp: "27.3",    Status: "Rain"  },  {    CityCode: "4930956",    CityName: "Boston",    Temp: "4.2",    Status: "Mist"  },  {    CityCode: "1796236",    CityName: "Shanghai",    Temp: "10.1",    Status: "Clouds"  },  {    CityCode: "3143244",    CityName: "Oslo",    Temp: "-3.9",    Status: "Clear"  }];
+
 
 function App() {
 
-  
+  const [cities, setCities] = useState([]);
   const [weather, setWeather] = useState([]);
+  
+  
+  useEffect(() => {
+    fetch('cities.json')
+      .then(res => res.json())
+      .then(data => setCities(data.List))
+      .catch(err => console.error(err));
+  }, []);
 
-  console.log(weather)
- 
+
+
   useEffect(() => {
     const fetchData = async () => {
       for (let i = 0; i < cities.length; i++) {
         const result = await axios(
-          `http://api.openweathermap.org/data/2.5/weather?id=${cities[i].CityCode}&appid=10497b1b7f6a8b11047bd09b0f12ec24`
+          `http://api.openweathermap.org/data/2.5/weather?id=${cities[i].CityCode}&appid=10497b1b7f6a8b11047bd09b0f12ec24&units=metric`
         );
-        setWeather(prevState => [          ...prevState,          {            
+        setWeather(prevState => [    ...prevState,  {            
             city: cities[i].CityCode,
             temp: result.data.main.temp,
             temp_max: result.data.main.temp_max,
@@ -32,6 +41,9 @@ function App() {
             humidity: result.data.main.humidity,
             pressure: result.data.main.pressure,
             description: result.data.weather[0].main,
+            country: result.data.sys.country,
+            icon: result.data.weather[0].icon,
+            speed: result.data.wind.speed
             
           }
         ]);
@@ -43,19 +55,6 @@ function App() {
 
 
 
-
-  
-
-  const [currentDateTime, setCurrentDateTime] = useState(new Date().toLocaleString());
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentDateTime(new Date().toLocaleString());
-    }, 1000);
-    return () => clearInterval(intervalId);
-}, []);
-
-  
  
   const cards = weather.map(data=>{
     return(
@@ -70,36 +69,63 @@ function App() {
         humidity={data.humidity}
         sunrise={data.sunrise}
         sunset={data.sunset}
-
+        visibility={data.visibility}
+        country={data.country}
+        icon={data.icon}
+        speed={data.speed}
       />
     )
   })
 
-
+  useEffect(() => {
+    
+    
+    const fetchWeatherData = async () => {
+      const weatherPromises = cities.map(city => {
+        const weatherCacheKey = `weather_${city.CityCode}`;
+        const weatherCache = localStorage.getItem(weatherCacheKey);
+  
+        if (weatherCache) {
+          const weatherCacheData = JSON.parse(weatherCache);
+          const cacheTime = new Date(weatherCacheData.timestamp).getTime();
+          const currentTime = new Date().getTime();
+          const timeDifference = (currentTime - cacheTime) / 1000 / 60;
+          if (timeDifference < 5) {
+            return Promise.resolve(weatherCacheData.data);
+          }
+        }
+  
+       
+      });
+  
+      const weatherData = await Promise.all(weatherPromises);
+      setWeather(weatherData);
+    };
+  
+    fetchWeatherData();
+  }, [cities]);
+    
 
   return (
+    
 
-  
     <div className="App">
 
-
+    
       <di className="top">
         <img src='./Assests/logo.png' className='weather-icon' alt="weatehr"/>
         <h1 className='header-name'>weather app</h1>
      </di> 
 
-
     <section className='cards-list'>
     {cards}
     </section>
-    
-    
-
-                        
-                  
+             
    
  
     </div>
+    
+
   );
 }
 

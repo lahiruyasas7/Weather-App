@@ -1,33 +1,38 @@
 .App {
   text-align: center;
- 
+
 }
 
-body{
-  background-image: url('./Assests/Headerbg.png'); 
+body {
+  background-image: url('../Assests/Headerbg.png');
   background-repeat: no-repeat;
   background-position: center top;
   background-color: rgb(31, 33, 40);
   height: 50%;
-  
-  
+
+
 }
 
-.top{
-  
+.top {
+
   display: flex;
   text-align: center;
 }
-.header-name, .weather-icon{
+
+.header-name,
+.weather-icon {
   display: inline-block;
 }
-.weather-icon{
+
+.weather-icon {
   height: 30px;
   padding-top: 30px;
   padding-left: 40%;
 }
 
-h1, h2, p{
+h1,
+h2,
+p {
   color: aliceblue;
 }
 
@@ -44,24 +49,27 @@ h1, h2, p{
 }
 
 
-.cards-list{
+.cards-list {
 
-  padding:3rem 0;
-  width:var(--view-width);
-  max-width:var(--max-width);
-  margin:0 auto;
-  display:grid;
-  gap: 20px;;
+  padding: 3rem 0;
+  width: var(--view-width);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  gap: 20px;
+  ;
 }
 
-@media screen and (min-width:992px){
-  .cards-list{
-    grid-template-columns:1fr 1fr ;
+@media screen and (min-width:992px) {
+  .cards-list {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
-
-
-
-
-
+.btn-search {
+  background-color: blueviolet;
+  height: 30px;
+  color: aliceblue;
+  border: none;
+  border-radius: 5px;
+}

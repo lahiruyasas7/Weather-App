@@ -1,0 +1,59 @@
+.viewcurrentWeather {
+  width: 1000px;
+  border-radius: 20px;
+  background-color: rgb(31, 167, 167);
+  height: auto;
+  margin: auto;
+}
+
+.viewweather-description {
+
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.viewweather-maxmincel,
+.weather-type {
+  display: inline;
+}
+
+.viewweather-maxmincel {
+  float: right;
+  padding-left: 300px;
+}
+
+.viewcurrent-weather-footer {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(55, 59, 71);
+  height: auto;
+}
+
+.viewcon1,
+.viewcon2,
+.viewcon3 {
+  display: inline-block;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+}
+
+.viewcon1 {
+  padding-left: 100px;
+}
+
+.viewcon3 {
+  padding-right: 100px;
+}
+
+p {
+  padding: 0;
+}
+
+.viewarrow-button {
+  position: absolute;
+  top: 120px;
+  left: 300px;
+}

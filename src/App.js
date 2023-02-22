@@ -1,30 +1,22 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Styles/App.css";
-import cities from "./cities.json";
+import citiesData from "./cities.json";
 import DashBoardCard from "./Components/DashBoardCard";
 import ViewWeather from "./Components/ViewWeather";
 import Button from "react-bootstrap/Button";
 
 function App() {
-  const [cities, setCities] = useState([]);
   const [weather, setWeather] = useState([]);
   const [viewCard, setViewCard] = useState(false);
 
-  console.log(weather);
-
-  useEffect(() => {
-    fetch("cities.json")
-      .then((res) => res.json())
-      .then((data) => setCities(data.List))
-      .catch((err) => console.error(err));
-  }, []);
+  const cities = citiesData.List.map((city) => city);
 
   useEffect(() => {
     const fetchData = async () => {
       for (let i = 0; i < cities.length; i++) {
         const result = await axios(
-          `${process.env.REACT_APP_UNSPLASH_URL}?id=${cities[i].CityCode}&appid=${process.env.REACT_APP_UNSPLASH_KEY}=metric`
+          `${process.env.REACT_APP_API_URL}?id=${cities[i].CityCode}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
         );
         setWeather((prevState) => [
           ...prevState,
@@ -51,13 +43,6 @@ function App() {
     fetchData();
   }, []);
 
-  function toggle(cityId) {
-    setViewCard(true);
-  }
-  const deleteCard = (cityId) => {
-    setWeather(weather.filter((task) => task.cityId !== cityId));
-  };
-
   const cards = weather.map((data) => {
     return (
       <DashBoardCard
@@ -81,37 +66,28 @@ function App() {
       />
     );
   });
-  
-    
+
+  const CACHE_KEY = "weatherData";
+  const CACHE_EXPIRATION = 5 * 60 * 1000;
+
   useEffect(() => {
-    
-    
-    const fetchWeatherData = async () => {
-      const weatherPromises = cities.map(city => {
-        const weatherCacheKey = `weather_${city.CityCode}`;
-        const weatherCache = localStorage.getItem(weatherCacheKey);
-  
-        if (weatherCache) {
-          const weatherCacheData = JSON.parse(weatherCache);
-          const cacheTime = new Date(weatherCacheData.timestamp).getTime();
-          const currentTime = new Date().getTime();
-          const timeDifference = (currentTime - cacheTime) / 1000 / 60;
-          if (timeDifference < 5) {
-            return Promise.resolve(weatherCacheData.data);
-          }
-        }
-  
-       
-      });
-  
-      const weatherData = await Promise.all(weatherPromises);
-      setWeather(weatherData);
-    };
-  
-    fetchWeatherData();
-  }, [cities]);
+    const cachedData = JSON.parse(localStorage.getItem(CACHE_KEY));
 
+    if (cachedData && Date.now() - cachedData.timestamp < CACHE_EXPIRATION) {
+      setWeather(cachedData.data);
+    }
+  }, []);
 
+  useEffect(() => {
+    localStorage.setItem(CACHE_KEY, JSON.stringify(weather));
+  }, [weather]);
+
+  function toggle() {
+    setViewCard(true);
+  }
+  const deleteCard = (cityId) => {
+    setWeather(weather.filter((task) => task.cityId !== cityId));
+  };
 
   return (
     <div className="App">

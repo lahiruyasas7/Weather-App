@@ -18,6 +18,11 @@ function DashBoardCard(props) {
     <>
       <div className="currentWeather" key={props.cityId} onClick={props.toggle}>
         <div>
+          <CloseButton
+            className="closeCard"
+            aria-label="Hide"
+            onClick={props.deleteCard}
+          />
           <h2 className="cityName">
             {props.name},{props.country}
           </h2>
@@ -35,7 +40,7 @@ function DashBoardCard(props) {
         <div className="weather-description">
           <div className="weather-type">
             <p className="type">{props.description}</p>
-            <img src='../Assests/img1.png' className="wether-icon" />
+            <img src="../Assests/img1.png" className="wether-icon" />
           </div>
           <div className="weather-maxmincel">
             <h2 className="celcicus">{Math.round(props.temp)}°c</h2>
@@ -50,7 +55,7 @@ function DashBoardCard(props) {
             <p>Visibility: {props.visibility / 1000}Km</p>
           </div>
           <div className="con2">
-            <img src='../Assests/VectorSmartObject.png' className="smart-obj" />
+            <img src="../Assests/VectorSmartObject.png" className="smart-obj" />
             <p>{props.speed}ms </p>
           </div>
           <div className="con3">
@@ -60,12 +65,6 @@ function DashBoardCard(props) {
             <p>Sunset: {new Date(props.sunset * 1000).toLocaleTimeString()}</p>
           </div>
         </div>
-
-        <CloseButton
-          className="closeCard"
-          aria-label="Hide"
-          onClick={props.deleteCard}
-        />
       </div>
     </>
   );

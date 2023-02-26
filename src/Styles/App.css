@@ -59,7 +59,7 @@ p {
   margin: 0 auto;
   display: grid;
   gap: 20px;
-  
+
 }
 
 @media screen and (min-width:992px) {
@@ -76,6 +76,6 @@ p {
   border-radius: 5px;
 }
 
-.search-bar{
+.search-bar {
   background-color: rgb(45, 43, 43);
 }

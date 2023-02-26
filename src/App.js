@@ -6,22 +6,20 @@ import DashBoardCard from "./Components/DashBoardCard";
 import ViewWeather from "./Components/ViewWeather";
 import Button from "react-bootstrap/Button";
 
-
 function App() {
   const [weather, setWeather] = useState([]);
   const [viewCard, setViewCard] = useState(false);
-  const [selectedCard, setSelectedCard] = useState(null)
-
+  const [selectedCard, setSelectedCard] = useState(null);
 
   const cities = citiesData.List.map((city) => city);
-  
+
   useEffect(() => {
     const fetchData = async () => {
       for (let i = 0; i < cities.length; i++) {
         const result = await axios(
           `${process.env.REACT_APP_API_URL}?id=${cities[i].CityCode}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
         );
-        
+
         setWeather((prevState) => [
           ...prevState,
           {
@@ -44,14 +42,10 @@ function App() {
           },
         ]);
       }
-      
     };
 
     fetchData();
   }, []);
-
-
-
 
   const cards = weather.map((data) => {
     return (
@@ -93,22 +87,17 @@ function App() {
     localStorage.setItem(CACHE_KEY, JSON.stringify(weather));
   }, [weather]);
 
-
   function toggle(cityId) {
-    const cardData = weather.find((data)=>data.cityId === cityId)
+    const cardData = weather.find((data) => data.cityId === cityId);
     setSelectedCard(cardData);
     setViewCard(true);
-  
   }
-  
 
   const deleteCard = (cityId) => {
     setWeather(weather.filter((data) => data.cityId !== cityId));
-    
   };
 
-console.log(weather)
-
+  console.log(weather);
 
   return (
     <div className="App">
@@ -123,12 +112,12 @@ console.log(weather)
           add city
         </Button>{" "}
       </div>
-   
-      <section className="cards-list"> {!viewCard && cards}</section>
-      
-    
 
-      {viewCard && selectedCard && <ViewWeather setView={toggle} viewData={selectedCard}/>} 
+      <section className="cards-list"> {!viewCard && cards}</section>
+
+      {viewCard && selectedCard && (
+        <ViewWeather setView={toggle} viewData={selectedCard} />
+      )}
 
       <div className="footer">2023 Fidenz Technologies</div>
     </div>

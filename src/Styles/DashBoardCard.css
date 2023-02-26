@@ -7,14 +7,15 @@
   background-image: url('../Assests/Headerbg.png');
   position: relative;
   background-size: 100% 110%;
-  
- 
+
+
 }
 
-.currentWeather:hover{
+.currentWeather:hover {
   background-color: rgb(31, 167, 167);
 }
-.timeNcountry{
+
+.timeNcountry {
   text-align: center;
 
 }
@@ -25,7 +26,7 @@
   text-align: center;
   align-items: center;
   justify-content: center;
-  
+
 }
 
 .weather-maxmincel,
@@ -46,7 +47,7 @@
   padding-bottom: 0%;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
- /* position: absolute;
+  /* position: absolute;
   bottom: opx;
   width: 100%; */
 }
@@ -77,13 +78,13 @@ p {
 }
 
 .closeCard {
-  
- 
+
+
   top: 10px;
   right: 10px;
   position: absolute;
   height: 12px;
-  
+
 }
 
 .cards-list {
@@ -94,7 +95,7 @@ p {
   margin: 0 auto;
   display: grid;
   gap: 20px;
-  
+
 }
 
 @media screen and (min-width:992px) {

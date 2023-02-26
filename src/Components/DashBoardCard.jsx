@@ -1,8 +1,14 @@
 import "../Styles/DashBoardCard.css";
+
 import React, { useState, useEffect } from "react";
 import CloseButton from "react-bootstrap/CloseButton";
 
+
+
+
 function DashBoardCard(props) {
+  
+
   const [currentDateTime, setCurrentDateTime] = useState(
     new Date().toLocaleString()
   );
@@ -14,17 +20,29 @@ function DashBoardCard(props) {
     return () => clearInterval(intervalId);
   }, []);
 
+  function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+
+
   return (
     <>
-      <div className="currentWeather" key={props.cityId} onClick={props.toggle}>
-        <div>
+    
+      <div className="currentWeather" key={props.cityId} style={{backgroundColor: getRandomColor()}} >
+        
+        
           <CloseButton
             className="closeCard"
-            aria-label="Hide"
             onClick={props.deleteCard}
           />
+          <div className="timeNcountry" >
           <h2 className="cityName">
-            {props.name},{props.country}
+            {props.name}, {props.country}
           </h2>
           <p className="timeNdate">
             {" "}
@@ -37,10 +55,11 @@ function DashBoardCard(props) {
           </p>
         </div>
 
-        <div className="weather-description">
+        <div className="weather-description" onClick={props.toggle}>
           <div className="weather-type">
             <p className="type">{props.description}</p>
-            <img src="../Assests/img1.png" className="wether-icon" />
+           
+            <img src={`http://openweathermap.org/img/w/${props.icon}.png`} className="wether-icon" alt="weather icon"  />
           </div>
           <div className="weather-maxmincel">
             <h2 className="celcicus">{Math.round(props.temp)}°c</h2>
@@ -56,7 +75,7 @@ function DashBoardCard(props) {
           </div>
           <div className="con2">
             <img src="../Assests/VectorSmartObject.png" className="smart-obj" />
-            <p>{props.speed}ms </p>
+            <p>{props.speed}m/s {props.degree}Degree</p>
           </div>
           <div className="con3">
             <p>
@@ -66,6 +85,8 @@ function DashBoardCard(props) {
           </div>
         </div>
       </div>
+      
+      
     </>
   );
 }

@@ -1,12 +1,23 @@
 .currentWeather {
-  width: 500px;
+  width: 600px;
   border-radius: 10px;
   background-color: rgb(31, 167, 167);
   height: auto;
   margin: auto;
-
+  background-image: url('../Assests/Headerbg.png');
+  position: relative;
+  background-size: 100% 110%;
+  
+ 
 }
 
+.currentWeather:hover{
+  background-color: rgb(31, 167, 167);
+}
+.timeNcountry{
+  text-align: center;
+
+}
 
 .weather-description {
 
@@ -14,7 +25,7 @@
   text-align: center;
   align-items: center;
   justify-content: center;
-
+  
 }
 
 .weather-maxmincel,
@@ -35,6 +46,9 @@
   padding-bottom: 0%;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+ /* position: absolute;
+  bottom: opx;
+  width: 100%; */
 }
 
 .con1,
@@ -63,9 +77,28 @@ p {
 }
 
 .closeCard {
-  color: black;
-  top: 5px;
-  right: 5px;
-  position: relative;
-  height: 6px;
+  
+ 
+  top: 10px;
+  right: 10px;
+  position: absolute;
+  height: 12px;
+  
+}
+
+.cards-list {
+
+  padding: 3rem 0;
+  width: var(--view-width);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  gap: 20px;
+  
+}
+
+@media screen and (min-width:992px) {
+  .cards-list {
+    grid-template-columns: 1fr 1fr;
+  }
 }

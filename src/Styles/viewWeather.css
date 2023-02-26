@@ -4,6 +4,22 @@
   background-color: rgb(31, 167, 167);
   height: auto;
   margin: auto;
+  position: relative;
+  top: 2px;
+}
+
+@media screen and (min-width: 768px) { 
+  .viewcurrentWeather {
+    width: 500px;
+    margin: auto;
+    height: auto;
+  }
+}
+
+@media screen and (min-width: 992px) { 
+  .viewcurrentWeather {
+    width: 800px;
+  }
 }
 
 .viewweather-description {
@@ -42,6 +58,7 @@
 
 .viewcon1 {
   padding-left: 100px;
+  text-align: left;
 }
 
 .viewcon3 {
@@ -54,6 +71,6 @@ p {
 
 .viewarrow-button {
   position: absolute;
-  top: 120px;
-  left: 300px;
+  top: 40px;
+  left: 30px;
 }

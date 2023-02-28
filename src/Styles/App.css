@@ -35,6 +35,7 @@ h1,
 h2,
 p {
   color: aliceblue;
+  font-weight: 700;
 
 }
 
@@ -67,6 +68,7 @@ p {
     grid-template-columns: 1fr 1fr;
   }
 }
+
 
 .btn-search {
   background-color: blueviolet;

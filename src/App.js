@@ -5,43 +5,46 @@ import citiesData from "./cities.json";
 import DashBoardCard from "./Components/DashBoardCard";
 import ViewWeather from "./Components/ViewWeather";
 import Button from "react-bootstrap/Button";
+import { getWeatherData } from "./APIHelper";
 
 function App() {
   const [weather, setWeather] = useState([]);
   const [viewCard, setViewCard] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
 
-  const cities = citiesData.List.map((city) => city);
+  const cities = citiesData.List;
 
   useEffect(() => {
     const fetchData = async () => {
-      for (let i = 0; i < cities.length; i++) {
+      const promises = cities.map(async (city) => {
         const result = await axios(
-          `${process.env.REACT_APP_API_URL}?id=${cities[i].CityCode}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
+          `${process.env.REACT_APP_API_URL}?id=${city.CityCode}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
         );
 
-        setWeather((prevState) => [
-          ...prevState,
-          {
-            cityId: cities[i].CityCode,
-            temp: result.data.main.temp,
-            temp_max: result.data.main.temp_max,
-            temp_min: result.data.main.temp_min,
-            sunrise: result.data.sys.sunrise,
-            sunset: result.data.sys.sunset,
-            name: result.data.name,
-            visibility: result.data.visibility,
-            humidity: result.data.main.humidity,
-            pressure: result.data.main.pressure,
-            description: result.data.weather[0].main,
-            country: result.data.sys.country,
-            icon: result.data.weather[0].icon,
-            speed: result.data.wind.speed,
-            degree: result.data.wind.deg,
-            dt: result.data.dt,
-          },
-        ]);
-      }
+        //  const result = await getWeatherData(city.CityCode);
+
+        return {
+          cityId: city.CityCode,
+          temp: result.data.main.temp,
+          temp_max: result.data.main.temp_max,
+          temp_min: result.data.main.temp_min,
+          sunrise: result.data.sys.sunrise,
+          sunset: result.data.sys.sunset,
+          name: result.data.name,
+          visibility: result.data.visibility,
+          humidity: result.data.main.humidity,
+          pressure: result.data.main.pressure,
+          description: result.data.weather[0].main,
+          country: result.data.sys.country,
+          icon: result.data.weather[0].icon,
+          speed: result.data.wind.speed,
+          degree: result.data.wind.deg,
+          dt: result.data.dt,
+        };
+      });
+
+      const data = await Promise.all(promises);
+      setWeather(data);
     };
 
     fetchData();
@@ -56,7 +59,7 @@ function App() {
         temp={data.temp}
         description={data.description}
         temp_min={data.temp_min}
-        temp_mac={data.temp_max}
+        temp_max={data.temp_max}
         pressure={data.pressure}
         humidity={data.humidity}
         sunrise={data.sunrise}

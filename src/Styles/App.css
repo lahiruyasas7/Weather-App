@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-
 }
 
 body {
@@ -9,12 +8,9 @@ body {
   background-position: center top;
   background-color: rgb(31, 33, 40);
   height: 50%;
-
-
 }
 
 .top {
-
   display: flex;
   text-align: center;
 }
@@ -36,7 +32,6 @@ h2,
 p {
   color: aliceblue;
   font-weight: 700;
-
 }
 
 .footer {
@@ -53,7 +48,6 @@ p {
 
 
 .cards-list {
-
   padding: 3rem 0;
   width: var(--view-width);
   max-width: var(--max-width);
@@ -68,7 +62,6 @@ p {
     grid-template-columns: 1fr 1fr;
   }
 }
-
 
 .btn-search {
   background-color: blueviolet;

@@ -1,5 +1,4 @@
 import "../Styles/DashBoardCard.css";
-import ViewWeather from "./ViewWeather";
 import React, { useState, useEffect } from "react";
 import CloseButton from "react-bootstrap/CloseButton";
 
@@ -23,18 +22,13 @@ function DashBoardCard(props) {
   }, []);
 
   return (
-    <div
-      className="currentWeather"
-      key={props.cityId}
-      style={{ backgroundColor: colors }}
-    >
+    <div className="currentWeather" style={{ backgroundColor: colors }}>
       <CloseButton className="closeCard" onClick={props.deleteCard} />
       <div className="timeNcountry">
         <h2 className="cityName">
           {props.name}, {props.country}
         </h2>
         <p className="timeNdate">
-          {" "}
           {new Intl.DateTimeFormat("default", {
             hour: "numeric",
             minute: "numeric",
@@ -52,6 +46,7 @@ function DashBoardCard(props) {
             src={`${process.env.REACT_APP_ICON_URL}${props.icon}.png`}
             className="wether-icon"
             alt="weather icon"
+            onClick={props.toggle}
           />
         </div>
         <div className="weather-maxmincel">
@@ -60,7 +55,7 @@ function DashBoardCard(props) {
           <p className="tempmax">Temp max:{Math.round(props.temp_max)}°c</p>
         </div>
       </div>
-      <div className="current-weather-footer">
+      <div className="current-weather-footer" onClick={props.toggle}>
         <div className="con1">
           <p>Presure: {props.pressure} pa</p>
           <p>Humidity:{props.humidity}% </p>

@@ -17,11 +17,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       const promises = cities.map(async (city) => {
-        const result = await axios(
-          `${process.env.REACT_APP_API_URL}?id=${city.CityCode}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
-        );
-
-        //  const result = await getWeatherData(city.CityCode);
+        const result = await getWeatherData(city.CityCode);
 
         return {
           cityId: city.CityCode,
@@ -53,7 +49,7 @@ function App() {
   const cards = weather.map((data) => {
     return (
       <DashBoardCard
-        key={data.CityCode}
+        key={data.cityId}
         cityId={data.cityId}
         name={data.name}
         temp={data.temp}
@@ -95,31 +91,31 @@ function App() {
     setSelectedCard(cardData);
     setViewCard(true);
   }
-
+  const closeView = () => {
+    setViewCard(false);
+  };
   const deleteCard = (cityId) => {
     setWeather(weather.filter((data) => data.cityId !== cityId));
   };
-
-  console.log(weather);
-
+  console.log(!viewCard);
   return (
     <div className="App">
-      <di className="top">
+      <div className="top">
         <img src="./Assests/logo.png" className="weather-icon" alt="weatehr" />
         <h1 className="header-name">weather app</h1>
-      </di>
+      </div>
 
       <div>
         <input type="text" placeholder="Enter a city" className="search-bar" />
         <Button className="btn-search" variant="primary">
           add city
-        </Button>{" "}
+        </Button>
       </div>
 
       <section className="cards-list"> {!viewCard && cards}</section>
 
       {viewCard && selectedCard && (
-        <ViewWeather setView={toggle} viewData={selectedCard} />
+        <ViewWeather closeView={closeView} viewData={selectedCard} />
       )}
 
       <div className="footer">2023 Fidenz Technologies</div>

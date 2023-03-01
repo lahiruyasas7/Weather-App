@@ -14,7 +14,7 @@ function ViewWeather({ viewData, closeView }) {
   }, []);
 
   return (
-    <div className="viewcurrentWeather" key={viewData.cityId} style={{}}>
+    <div className="viewcurrentWeather" key={viewData.cityId}>
       <button className="viewarrow-button">
         <span className="viewarrow-symbol" onClick={closeView}>
           ←
@@ -26,7 +26,6 @@ function ViewWeather({ viewData, closeView }) {
       </h2>
       <div>
         <p className="timeNdate">
-          {" "}
           {new Intl.DateTimeFormat("default", {
             hour: "numeric",
             minute: "numeric",

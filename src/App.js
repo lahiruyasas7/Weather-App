@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import "./Styles/App.css";
 import citiesData from "./cities.json";
 import DashBoardCard from "./Components/DashBoardCard";
@@ -83,7 +82,11 @@ function App() {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem(CACHE_KEY, JSON.stringify(weather));
+    const cachedData = {
+      timestamp: Date.now(),
+      data: weather,
+    };
+    localStorage.setItem(CACHE_KEY, JSON.stringify(cachedData));
   }, [weather]);
 
   function toggle(cityId) {
@@ -97,7 +100,7 @@ function App() {
   const deleteCard = (cityId) => {
     setWeather(weather.filter((data) => data.cityId !== cityId));
   };
-  console.log(!viewCard);
+
   return (
     <div className="App">
       <div className="top">

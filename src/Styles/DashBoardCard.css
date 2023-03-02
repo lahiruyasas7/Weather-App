@@ -1,71 +1,116 @@
 .currentWeather {
-  width: 600px;
+  width: 470px;
   border-radius: 10px;
-  height: auto;
+  height: 300px;
   margin: auto;
   background-image: url('../Assests/Headerbg.png');
   position: relative;
   background-size: 100% 110%;
 }
 
+
 .timeNcountry {
   text-align: center;
 }
 
-.weather-description {
+.top-leftside {
   display: flex;
   text-align: center;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  left: 50px;
+  top: 27px;
 }
 
-.weather-maxmincel,
-.weather-type {
-  display: inline;
+.cityName {
+  padding: 5px;
+  font-weight: 700;
+  font-size: 25px;
+  color: aliceblue;
 }
+
+
+.top-leftside,
+.weather-maxmincel {
+  display: inline-block;
+}
+
+.type,
+.weather-icon {
+  display: inline-block;
+}
+
+
+.weather-type {}
 
 .weather-maxmincel {
-  float: right;
-  padding-left: 300px;
+  right: 100px;
+  position: absolute;
+  top: 20px;
+  left: 267px;
+}
+
+.celcius {
+
+  font-size: 50px;
+  font-weight: 600;
+  color: aliceblue;
 }
 
 .current-weather-footer {
-  display: flex;
-  justify-content: space-between;
+
   background-color: rgb(55, 59, 71);
-  height: auto;
+  height: 120px;
   padding-bottom: 0%;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+  position: absolute;
+  bottom: 0;
+  width: 470px;
 }
 
 .con1,
 .con2,
 .con3 {
   display: inline-block;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-right: 25px;
 }
 
 .con1 {
-  padding-left: 50px;
+
+  text-align: left;
 }
 
-.con3 {
-  padding-right: 50px;
+.con3 {}
+
+.pressure,
+.humidity,
+.visibility,
+.sunrise,
+.sunset,
+.degree,
+.tempmin,
+.tempmax {
+  color: aliceblue;
+  font-size: small;
+  padding: 4px;
+  font-weight: 500;
 }
 
-p {
-  padding: 0;
+.timeNdate {
+  color: aliceblue;
+  font-size: smaller;
+  font-weight: 300;
 }
 
 .smart-obj {
   padding-top: 10px;
 }
 
-.celcius {
-  font-size: 30px;
-}
+
 
 .closeCard {
   top: 10px;

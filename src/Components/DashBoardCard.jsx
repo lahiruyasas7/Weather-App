@@ -24,52 +24,62 @@ function DashBoardCard(props) {
   return (
     <div className="currentWeather" style={{ backgroundColor: colors }}>
       <CloseButton className="closeCard" onClick={props.deleteCard} />
-      <div className="timeNcountry">
-        <h2 className="cityName">
-          {props.name}, {props.country}
-        </h2>
-        <p className="timeNdate">
-          {new Intl.DateTimeFormat("default", {
-            hour: "numeric",
-            minute: "numeric",
-            month: "short",
-            day: "numeric",
-          }).format(new Date(currentDateTime))}
-        </p>
-      </div>
 
-      <div className="weather-description" onClick={props.toggle}>
-        <div className="weather-type">
-          <p className="type">{props.description}</p>
+      <div onClick={props.toggle}>
+        <div className="top-leftside">
+          <div className="timeNcountry">
+            <div className="cityName">
+              {props.name}, {props.country}
+            </div>
+            <div className="timeNdate">
+              {new Intl.DateTimeFormat("default", {
+                hour: "numeric",
+                minute: "numeric",
+                month: "short",
+                day: "numeric",
+              }).format(new Date(currentDateTime))}
+            </div>
+          </div>
+          <div className="weather-type">
+            <p className="type">{props.description}</p>
 
-          <img
-            src={`${process.env.REACT_APP_ICON_URL}${props.icon}.png`}
-            className="wether-icon"
-            alt="weather icon"
-            onClick={props.toggle}
-          />
+            <img
+              src={`${process.env.REACT_APP_ICON_URL}${props.icon}.png`}
+              className="wether-icon"
+              alt="weather icon"
+              onClick={props.toggle}
+            />
+          </div>
         </div>
+
         <div className="weather-maxmincel">
-          <h2 className="celcius">{Math.round(props.temp)}°c</h2>
-          <p className="tempmin">Temp min:{Math.round(props.temp_min)}°c</p>
-          <p className="tempmax">Temp max:{Math.round(props.temp_max)}°c</p>
+          <div className="celcius">{Math.round(props.temp)}°c</div>
+          <div className="tempmin">Temp min:{Math.round(props.temp_min)}°c</div>
+          <div className="tempmax">Temp max:{Math.round(props.temp_max)}°c</div>
         </div>
-      </div>
-      <div className="current-weather-footer" onClick={props.toggle}>
-        <div className="con1">
-          <p>Presure: {props.pressure} pa</p>
-          <p>Humidity:{props.humidity}% </p>
-          <p>Visibility: {props.visibility / 1000}Km</p>
-        </div>
-        <div className="con2">
-          <img src="../Assests/VectorSmartObject.png" className="smart-obj" />
-          <p>
-            {props.speed}m/s {props.degree}Degree
-          </p>
-        </div>
-        <div className="con3">
-          <p>sunrise: {new Date(props.sunrise * 1000).toLocaleTimeString()}</p>
-          <p>Sunset: {new Date(props.sunset * 1000).toLocaleTimeString()}</p>
+
+        <div className="current-weather-footer" onClick={props.toggle}>
+          <div className="con1">
+            <div className="pressure">Presure: {props.pressure} pa</div>
+            <div className="humidity">Humidity:{props.humidity}% </div>
+            <div className="visibility">
+              Visibility: {props.visibility / 1000}Km
+            </div>
+          </div>
+          <div className="con2">
+            <img src="../Assests/VectorSmartObject.png" className="smart-obj" />
+            <div className="degree">
+              {props.speed}m/s {props.degree}Degree
+            </div>
+          </div>
+          <div className="con3">
+            <div className="sunrise">
+              sunrise: {new Date(props.sunrise * 1000).toLocaleTimeString()}
+            </div>
+            <div className="sunset">
+              Sunset: {new Date(props.sunset * 1000).toLocaleTimeString()}
+            </div>
+          </div>
         </div>
       </div>
     </div>

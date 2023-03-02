@@ -105,15 +105,21 @@ function App() {
     <div className="App">
       <div className="top">
         <img src="./Assests/logo.png" className="weather-icon" alt="weatehr" />
-        <h1 className="header-name">weather app</h1>
+        <h1 className="header-name"> Weather App</h1>
       </div>
 
-      <div>
-        <input type="text" placeholder="Enter a city" className="search-bar" />
-        <Button className="btn-search" variant="primary">
-          add city
-        </Button>
-      </div>
+      {!viewCard && (
+        <div>
+          <input
+            type="text"
+            placeholder="Enter a city"
+            className="search-bar"
+          />
+          <Button className="btn-search" variant="primary">
+            add city
+          </Button>
+        </div>
+      )}
 
       <section className="cards-list"> {!viewCard && cards}</section>
 

@@ -13,6 +13,7 @@ body {
 .top {
   display: flex;
   text-align: center;
+  padding-top: 50px;
 }
 
 .header-name,
@@ -33,10 +34,9 @@ body {
 }
 
 h1,
-h2,
 p {
   color: aliceblue;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .footer {
@@ -80,6 +80,7 @@ p {
   color: aliceblue;
   border: none;
   border-radius: 5px;
+  width: 90px;
 }
 
 .search-bar {

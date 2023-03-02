@@ -2,7 +2,7 @@
   width: 1000px;
   border-radius: 10px;
   background-color: rgb(31, 167, 167);
-  height: auto;
+  height: 472px;
   margin: auto;
   position: relative;
   top: 2px;
@@ -12,14 +12,24 @@
   .viewcurrentWeather {
     width: 500px;
     margin: auto;
-    height: auto;
+    /*  height: auto;*/
   }
 }
 
 @media screen and (min-width: 992px) {
   .viewcurrentWeather {
-    width: 800px;
+    width: 925px;
   }
+}
+
+.view-top {
+  position: absolute;
+  top: 32px;
+  left: 389px;
+}
+
+.timeNdate {
+  font-weight: 400;
 }
 
 .viewweather-description {
@@ -27,33 +37,54 @@
   text-align: center;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  top: 200px;
+  left: 263px;
 }
 
-.viewweather-maxmincel,
-.weather-type {
-  display: inline;
+.viewweather-type {
+  left: 81px;
+  position: absolute;
+}
+
+.weather-type,
+.maxtemp,
+.tempmin,
+.view-pressure,
+.view-humidity,
+.view-visibility,
+.view-degree,
+.view-sunrise,
+.view-sunset {
+  color: aliceblue;
+  font-weight: 600;
+  font-size: 17px;
 }
 
 .viewweather-maxmincel {
-  float: right;
-  padding-left: 300px;
+  position: absolute;
+  right: -355px;
+  top: -76px;
 }
 
 .viewcurrent-weather-footer {
-  display: flex;
-  justify-content: space-between;
   background-color: rgb(55, 59, 71);
-  height: auto;
+  height: 164px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+  position: absolute;
+  width: 925px;
+  bottom: 0;
 }
 
 .viewcon1,
 .viewcon2,
 .viewcon3 {
   display: inline-block;
-  padding-top: 10px;
+  padding-top: 46px;
   padding-bottom: 10px;
+  margin-right: 80px;
+
 }
 
 .viewcon1 {

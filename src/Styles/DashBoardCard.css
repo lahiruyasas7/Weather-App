@@ -8,7 +8,6 @@
   background-size: 100% 110%;
 }
 
-
 .timeNcountry {
   text-align: center;
 }
@@ -30,19 +29,23 @@
   color: aliceblue;
 }
 
-
-.top-leftside,
-.weather-maxmincel {
-  display: inline-block;
+.type {
+  position: absolute;
+  top: 11px;
+  left: 66px
 }
 
-.type,
+.weather-type {
+  position: absolute;
+  top: 73px;
+  left: 14px;
+}
+
 .weather-icon {
-  display: inline-block;
+  position: absolute;
+  top: 20px;
+  left: 20px;
 }
-
-
-.weather-type {}
 
 .weather-maxmincel {
   right: 100px;
@@ -72,11 +75,18 @@
 
 .con1,
 .con2,
-.con3 {
+.con3,
+.con1-img,
+.con2-img {
   display: inline-block;
   padding-top: 15px;
   padding-bottom: 15px;
-  margin-right: 25px;
+  margin-right: 10px;
+}
+
+.con1-img,
+.con2-img {
+  height: 40px;
 }
 
 .con1 {
@@ -84,7 +94,11 @@
   text-align: left;
 }
 
-.con3 {}
+.type {
+  font-size: 17px;
+  font-weight: 400;
+  color: aliceblue;
+}
 
 .pressure,
 .humidity,
@@ -108,13 +122,14 @@
 
 .smart-obj {
   padding-top: 10px;
+  height: 15px;
 }
-
-
 
 .closeCard {
   top: 10px;
-  right: 10px;
+  right: 17px;
   position: absolute;
   height: 12px;
+  color: aliceblue;
+  width: 12px;
 }

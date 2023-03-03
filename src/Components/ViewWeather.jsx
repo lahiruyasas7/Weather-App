@@ -1,5 +1,6 @@
 import "../Styles/ViewWeather.css";
 import React, { useState, useEffect } from "react";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 function ViewWeather({ viewData, closeView }) {
   const [currentDateTime, setCurrentDateTime] = useState(
@@ -15,11 +16,10 @@ function ViewWeather({ viewData, closeView }) {
 
   return (
     <div className="viewcurrentWeather" key={viewData.cityId}>
-      <button className="viewarrow-button">
-        <span className="viewarrow-symbol" onClick={closeView}>
-          ←
-        </span>
-      </button>
+      <div className="viewarrow-button" onClick={closeView}>
+        <ArrowBackIcon />
+      </div>
+
       <div className="view-top">
         <div className="cityName">
           {viewData.name}, {viewData.country}
@@ -27,10 +27,10 @@ function ViewWeather({ viewData, closeView }) {
 
         <div className="timeNdate">
           {new Intl.DateTimeFormat("default", {
-            hour: "numeric",
-            minute: "numeric",
             month: "short",
             day: "numeric",
+            hour: "numeric",
+            minute: "numeric",
           }).format(new Date(currentDateTime))}
         </div>
       </div>
@@ -42,36 +42,39 @@ function ViewWeather({ viewData, closeView }) {
             className="wether-icon"
             alt="weather-icon"
           />
-          <div className="weather-type">{viewData.description}</div>
+          <div className="viewweather-desp">{viewData.description}</div>
         </div>
+        <img src="../Assests/majorLine.png" className="majorLine-img" />
         <div className="viewweather-maxmincel">
-          <h1 className="celcicus">{Math.round(viewData.temp)}°c</h1>
+          <div className="view-celcius">{Math.round(viewData.temp)}°c</div>
           <div className="maxtemp">
             Temp min:{Math.round(viewData.temp_min)}°c
           </div>
-          <div className="tempmin">
+          <div className="mintemp">
             Temp max:{Math.round(viewData.temp_max)}°c
           </div>
         </div>
       </div>
 
       <div className="viewcurrent-weather-footer">
-        <div className="con1">
+        <div className="viewcon1">
           <div className="view-pressure">Presure:{viewData.pressure}pa</div>
           <div className="view-humidity">Huminity: {viewData.humidity}%</div>
           <div className="view-visibility">
             Visibility: {viewData.visibility} Km
           </div>
         </div>
-        <div className="con2">
+        <img src="../Assests/line.png" className="viewcon1-img" />
+        <div className="viewcon2">
+          <img src="../Assests/vectorArrow.png" className="smart-obj" />
           <div className="view-degree">
-            <img src="../Assests/vectorArrow.png" className="smart-obj" />
-            {viewData.speed}ms {viewData.degree}degree
+            {viewData.speed}m/s {viewData.degree} Degree
           </div>
         </div>
-        <div className="con3">
+        <img src="../Assests/line.png" className="viewcon2-img" />
+        <div className="viewcon3">
           <div className="view-sunrise">
-            sunrise: {new Date(viewData.sunrise * 1000).toLocaleTimeString()}
+            Sunrise: {new Date(viewData.sunrise * 1000).toLocaleTimeString()}
           </div>
           <div className="view-sunset">
             Sunset: {new Date(viewData.sunset * 1000).toLocaleTimeString()}

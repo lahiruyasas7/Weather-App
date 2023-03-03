@@ -15,31 +15,35 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const promises = cities.map(async (city) => {
-        const result = await getWeatherData(city.CityCode);
+      try {
+        const promises = cities.map(async (city) => {
+          const result = await getWeatherData(city.CityCode);
 
-        return {
-          cityId: city.CityCode,
-          temp: result.data.main.temp,
-          temp_max: result.data.main.temp_max,
-          temp_min: result.data.main.temp_min,
-          sunrise: result.data.sys.sunrise,
-          sunset: result.data.sys.sunset,
-          name: result.data.name,
-          visibility: result.data.visibility,
-          humidity: result.data.main.humidity,
-          pressure: result.data.main.pressure,
-          description: result.data.weather[0].main,
-          country: result.data.sys.country,
-          icon: result.data.weather[0].icon,
-          speed: result.data.wind.speed,
-          degree: result.data.wind.deg,
-          dt: result.data.dt,
-        };
-      });
+          return {
+            cityId: city.CityCode,
+            temp: result.data.main.temp,
+            temp_max: result.data.main.temp_max,
+            temp_min: result.data.main.temp_min,
+            sunrise: result.data.sys.sunrise,
+            sunset: result.data.sys.sunset,
+            name: result.data.name,
+            visibility: result.data.visibility,
+            humidity: result.data.main.humidity,
+            pressure: result.data.main.pressure,
+            description: result.data.weather[0].main,
+            country: result.data.sys.country,
+            icon: result.data.weather[0].icon,
+            speed: result.data.wind.speed,
+            degree: result.data.wind.deg,
+            dt: result.data.dt,
+          };
+        });
 
-      const data = await Promise.all(promises);
-      setWeather(data);
+        const data = await Promise.all(promises);
+        setWeather(data);
+      } catch (error) {
+        console.error("Error fetching weather data:", error);
+      }
     };
 
     fetchData();
@@ -104,7 +108,11 @@ function App() {
   return (
     <div className="App">
       <div className="top">
-        <img src="./Assests/logo.png" className="weather-icon" alt="weatehr" />
+        <img
+          src="./Assests/logo.png"
+          className="topweather-icon"
+          alt="weatehr"
+        />
         <h1 className="header-name"> Weather App</h1>
       </div>
 

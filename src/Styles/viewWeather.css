@@ -1,18 +1,17 @@
 .viewcurrentWeather {
   width: 1000px;
   border-radius: 10px;
-  background-color: rgb(31, 167, 167);
+  background-color: rgb(55, 141, 231);
   height: 472px;
   margin: auto;
   position: relative;
-  top: 2px;
+  top: 38px;
 }
 
 @media screen and (min-width: 768px) {
   .viewcurrentWeather {
     width: 500px;
     margin: auto;
-    /*  height: auto;*/
   }
 }
 
@@ -45,11 +44,18 @@
 .viewweather-type {
   left: 81px;
   position: absolute;
+
 }
 
-.weather-type,
+.view-celcius {
+  font-size: 50px;
+  font-weight: 500;
+  color: aliceblue;
+}
+
+.viewweather-desp,
 .maxtemp,
-.tempmin,
+.mintemp,
 .view-pressure,
 .view-humidity,
 .view-visibility,
@@ -59,12 +65,21 @@
   color: aliceblue;
   font-weight: 600;
   font-size: 17px;
+  padding: 3px;
+}
+
+.majorLine-img {
+  position: absolute;
+  top: -30px;
+  left: 192px;
+  height: 94px;
+  width: 1px;
 }
 
 .viewweather-maxmincel {
   position: absolute;
   right: -355px;
-  top: -76px;
+  top: -55px;
 }
 
 .viewcurrent-weather-footer {
@@ -79,12 +94,13 @@
 
 .viewcon1,
 .viewcon2,
-.viewcon3 {
+.viewcon3,
+.viewcon1-img,
+.viewcon2-img {
   display: inline-block;
   padding-top: 46px;
   padding-bottom: 10px;
-  margin-right: 80px;
-
+  margin-right: 40px;
 }
 
 .viewcon1 {
@@ -96,12 +112,14 @@
   padding-right: 100px;
 }
 
-p {
-  padding: 0;
-}
-
 .viewarrow-button {
   position: absolute;
-  top: 40px;
-  left: 30px;
+  top: 21px;
+  left: 26px;
+  color: aliceblue;
+}
+
+.viewcon1-img,
+.viewcon2-img {
+  height: 50px;
 }

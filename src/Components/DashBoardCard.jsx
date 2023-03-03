@@ -1,6 +1,6 @@
 import "../Styles/DashBoardCard.css";
 import React, { useState, useEffect } from "react";
-import CloseButton from "react-bootstrap/CloseButton";
+import CloseIcon from "@mui/icons-material/Close";
 
 function DashBoardCard(props) {
   const [colors, setColors] = useState("");
@@ -23,8 +23,9 @@ function DashBoardCard(props) {
 
   return (
     <div className="currentWeather" style={{ backgroundColor: colors }}>
-      <CloseButton className="closeCard" onClick={props.deleteCard} />
-
+      <div className="closeCard" onClick={props.deleteCard}>
+        <CloseIcon />
+      </div>
       <div onClick={props.toggle}>
         <div className="top-leftside">
           <div className="timeNcountry">
@@ -41,14 +42,13 @@ function DashBoardCard(props) {
             </div>
           </div>
           <div className="weather-type">
-            <p className="type">{props.description}</p>
-
             <img
               src={`${process.env.REACT_APP_ICON_URL}${props.icon}.png`}
               className="wether-icon"
               alt="weather icon"
               onClick={props.toggle}
             />
+            <div className="type">{props.description}</div>
           </div>
         </div>
 
@@ -61,17 +61,19 @@ function DashBoardCard(props) {
         <div className="current-weather-footer" onClick={props.toggle}>
           <div className="con1">
             <div className="pressure">Presure: {props.pressure} pa</div>
-            <div className="humidity">Humidity:{props.humidity}% </div>
+            <div className="humidity">Humidity: {props.humidity}% </div>
             <div className="visibility">
               Visibility: {props.visibility / 1000}Km
             </div>
           </div>
+          <img src="../Assests/line.png" className="con1-img" />
           <div className="con2">
-            <img src="../Assests/VectorSmartObject.png" className="smart-obj" />
+            <img src="../Assests/vectorArrow.png" className="smart-obj" />
             <div className="degree">
               {props.speed}m/s {props.degree}Degree
             </div>
           </div>
+          <img src="../Assests/line.png" className="con2-img" />
           <div className="con3">
             <div className="sunrise">
               sunrise: {new Date(props.sunrise * 1000).toLocaleTimeString()}

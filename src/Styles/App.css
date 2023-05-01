@@ -23,12 +23,6 @@ body {
 }
 
 
-@media screen and (max-width: 576px) {
-  .weather-icon {
-    padding-left: 10%;
-  }
-}
-
 .topweather-icon {
   height: 30px;
   padding-top: 30px;
@@ -63,19 +57,16 @@ p {
   position: absolute;
   left: 300px;
   top: 212px;
+  grid-template-columns: 1fr 1fr;
 }
-
+/* 
 @media screen and (min-width:992px) {
   .cards-list {
     grid-template-columns: 1fr 1fr;
   }
-}
+}*/
 
-@media screen and (min-width: 576px) and (max-width: 992px) {
-  .cards-list {
-    grid-template-columns: 1fr;
-  }
-}
+
 
 .btn-search {
   background-color: blueviolet;
@@ -93,5 +84,22 @@ p {
   height: 30px;
   border-radius: 5px;
   pad: 5px;
-  padding-left: 10px
+  padding-left: 10px;
+  color: aliceblue;
+}
+
+@media screen and (max-width: 576px)  {
+  .cards-list {
+    grid-template-columns: 1fr;
+    position: absolute;
+    left: 10px;
+  }
+  .weather-icon {
+    padding-left: 10%;
+  }
+  
+.topweather-icon {
+  
+  padding-left: 20%;
+}
 }

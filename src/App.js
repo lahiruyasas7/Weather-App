@@ -10,6 +10,7 @@ function App() {
   const [weather, setWeather] = useState([]);
   const [viewCard, setViewCard] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
+  //const [city, setCity] = useState("");
 
   const cities = citiesData.List;
 
@@ -104,6 +105,17 @@ function App() {
   const deleteCard = (cityId) => {
     setWeather(weather.filter((data) => data.cityId !== cityId));
   };
+
+  {
+    /*}
+function getcity(){
+  
+    const cityData = getWeatherData(city);
+  setWeather(cityData)
+  }
+  
+*/
+  }
 
   return (
     <div className="App">

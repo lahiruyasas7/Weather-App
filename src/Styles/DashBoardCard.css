@@ -133,3 +133,29 @@
   color: aliceblue;
   width: 12px;
 }
+
+@media  screen and (max-width: 576px)  {
+  .currentWeather{
+    width: 350px;
+  }
+  .top-leftside {
+    
+    left: 10px;
+    top: 27px;
+  }
+  .weather-maxmincel {
+    
+    left: 230px;
+  }
+  .footer-text{
+    position: absolute;
+    left: 2px;
+  }
+  .con1,
+.con2,
+.con3,
+.con1-img,
+.con2-img{
+  margin-right: 5px;
+}
+}

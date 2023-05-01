@@ -6,9 +6,10 @@
   margin: auto;
   position: relative;
   top: 38px;
+  
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 778px) {
   .viewcurrentWeather {
     width: 500px;
     margin: auto;

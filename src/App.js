@@ -5,12 +5,13 @@ import DashBoardCard from "./Components/DashBoardCard";
 import ViewWeather from "./Components/ViewWeather";
 import Button from "react-bootstrap/Button";
 import { getWeatherData } from "./APIHelper";
+//import { ConstructionOutlined } from "@mui/icons-material";
 
 function App() {
   const [weather, setWeather] = useState([]);
   const [viewCard, setViewCard] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
-  //const [city, setCity] = useState("");
+  const [city, setCity] = useState("");
 
   const cities = citiesData.List;
 
@@ -75,6 +76,17 @@ function App() {
     );
   });
 
+
+const handleInputChange = (event) =>{
+  setCity(event.target.value)
+}
+
+const handleButtonClick = () =>{
+  console.log(`City name: ${city}`);
+}
+
+console.log(city)
+
   const CACHE_KEY = "weatherData";
   const CACHE_EXPIRATION = 5 * 60 * 1000;
 
@@ -108,10 +120,13 @@ function App() {
 
   {
     /*}
-function getcity(){
+function getCity(){
   
     const cityData = getWeatherData(city);
-  setWeather(cityData)
+  setWeather(cityData);
+  .jason => {
+    json=>setWeather();
+  }
   }
   
 */
@@ -134,8 +149,9 @@ function getcity(){
             type="text"
             placeholder="Enter a city"
             className="search-bar"
+            onChange={handleInputChange}
           />
-          <Button className="btn-search" variant="primary">
+          <Button className="btn-search" variant="primary" onClick={handleButtonClick}>
             add city
           </Button>
         </div>

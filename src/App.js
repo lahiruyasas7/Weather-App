@@ -138,7 +138,7 @@ function getCity(){
         <img
           src="./Assests/logo.png"
           className="topweather-icon"
-          alt="weatehr"
+          alt="weather"
         />
         <h1 className="header-name"> Weather App</h1>
       </div>

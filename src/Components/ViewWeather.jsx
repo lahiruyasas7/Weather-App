@@ -13,7 +13,7 @@ function ViewWeather({ viewData, closeView }) {
     }, 1000);
     return () => clearInterval(intervalId);
   }, []);
-
+  //sample comment
   return (
     <div className="viewcurrentWeather" key={viewData.cityId}>
       <div className="viewarrow-button" onClick={closeView}>

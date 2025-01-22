@@ -44,7 +44,7 @@ function ViewWeather({ viewData, closeView }) {
           />
           <div className="viewweather-desp">{viewData.description}</div>
         </div>
-        <img src="../Assests/majorLine.png" className="majorLine-img" />
+        <img src="../Assests/majorLine.png" className="majorLine-img" alt="major-line"/>
         <div className="viewweather-maxmincel">
           <div className="view-celcius">{Math.round(viewData.temp)}°c</div>
           <div className="maxtemp">
@@ -64,14 +64,14 @@ function ViewWeather({ viewData, closeView }) {
             Visibility: {viewData.visibility} Km
           </div>
         </div>
-        <img src="../Assests/line.png" className="viewcon1-img" />
+        <img src="../Assests/line.png" className="viewcon1-img" alt="line"/>
         <div className="viewcon2">
-          <img src="../Assests/vectorArrow.png" className="smart-obj" />
+          <img src="../Assests/vectorArrow.png" className="smart-obj" alt="vectorArrow"/>
           <div className="view-degree">
             {viewData.speed}m/s {viewData.degree} Degree
           </div>
         </div>
-        <img src="../Assests/line.png" className="viewcon2-img" />
+        <img src="../Assests/line.png" className="viewcon2-img" alt="line"/>
         <div className="viewcon3">
           <div className="view-sunrise">
             Sunrise: {new Date(viewData.sunrise * 1000).toLocaleTimeString()}

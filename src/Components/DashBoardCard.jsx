@@ -67,14 +67,14 @@ function DashBoardCard(props) {
                 Visibility: {props.visibility / 1000}Km
               </div>
             </div>
-            <img src="../Assests/line.png" className="con1-img" />
+            <img src="../Assests/line.png" className="con1-img" alt="line"/>
             <div className="con2">
-              <img src="../Assests/vectorArrow.png" className="smart-obj" />
+              <img src="../Assests/vectorArrow.png" className="smart-obj" alt="vectorArrow"/>
               <div className="degree">
                 {props.speed}m/s {props.degree}Degree
               </div>
             </div>
-            <img src="../Assests/line.png" className="con2-img" />
+            <img src="../Assests/line.png" className="con2-img" alt="line"/>
             <div className="con3">
               <div className="sunrise">
                 sunrise: {new Date(props.sunrise * 1000).toLocaleTimeString()}

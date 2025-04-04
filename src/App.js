@@ -163,7 +163,7 @@ function getCity(){
         <ViewWeather closeView={closeView} viewData={selectedCard} />
       )}
 
-      <div className="footer">2023 Fidenz Technologies</div>
+      <div className="footer">2023 Lahiru Karunathilaka</div>
     </div>
   );
 }

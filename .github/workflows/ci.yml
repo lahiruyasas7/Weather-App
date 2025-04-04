@@ -23,6 +23,7 @@ jobs:
       run: docker push lahiruyasas/weather-app:latest
 
       deploy:
+      needs: build
     runs-on: ubuntu-latest
     needs: build  # Ensure deployment happens after the build job
 

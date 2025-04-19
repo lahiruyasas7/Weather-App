@@ -49,7 +49,7 @@ function App() {
     };
 
     fetchData();
-  }, []);
+  }, [cities]);
 
   const cards = weather.map((data) => {
     return (
@@ -96,6 +96,7 @@ console.log(city)
     if (cachedData && Date.now() - cachedData.timestamp < CACHE_EXPIRATION) {
       setWeather(cachedData.data);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -118,7 +119,6 @@ console.log(city)
     setWeather(weather.filter((data) => data.cityId !== cityId));
   };
 
-  {
     /*}
 function getCity(){
   
@@ -130,7 +130,6 @@ function getCity(){
   }
   
 */
-  }
 
   return (
     <div className="App">

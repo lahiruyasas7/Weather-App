@@ -24,7 +24,7 @@ jobs:
 
       deploy:
       needs: build
-    runs-on: ip-172-31-26-130
+    runs-on: [self-hosted, Linux, X64]
     steps:
       - name: pull image from docker hub
         run: docker pull lahiruyasas/weather-app:latest

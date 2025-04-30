@@ -18,7 +18,12 @@ jobs:
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
       run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - name: Build the Docker image
-      run: docker build -t lahiruyasas/weather-app .
+      run: |
+        docker build \
+         --build-arg REACT_APP_API_KEY=${{ secrets.REACT_APP_API_KEY }} \
+         --build-arg REACT_APP_API_URL=${{ secrets.REACT_APP_API_URL }} \
+         --build-arg REACT_APP_ICON_URL=${{ secrets.REACT_APP_ICON_URL }} \
+         -t lahiruyasas/weather-app .
     - name: Push to Dockerhub
       run: docker push lahiruyasas/weather-app:latest
 

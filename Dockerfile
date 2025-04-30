@@ -1,6 +1,15 @@
 # Step 1: Build the React app
 FROM node:16-alpine AS build
 WORKDIR /app
+# Accept build args
+ARG REACT_APP_API_KEY
+ARG REACT_APP_API_URL
+ARG REACT_APP_ICON_URL
+
+# Make env vars available to React build
+ENV REACT_APP_API_KEY=$REACT_APP_API_KEY
+ENV REACT_APP_API_URL=$REACT_APP_API_URL
+ENV REACT_APP_ICON_URL=$REACT_APP_ICON_URL
 COPY package.json package-lock.json ./
 RUN npm install
 COPY . .
